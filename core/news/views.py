@@ -48,7 +48,7 @@ def news_update(request, id):
             news_single.image = image
             news_single.save()
 
-            return redirect('news:home')
+            return redirect('home')
     else:
         news_form = NewsUpdateForm()
     context = {

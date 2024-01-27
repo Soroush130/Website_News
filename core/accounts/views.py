@@ -13,7 +13,7 @@ User = get_user_model()
 def log_in(request):
     url = request.META.get("HTTP_REFERER")
     if request.user.is_authenticated:
-        return redirect('news:home')
+        return redirect('home')
 
     if request.method == "POST":
         login_form = LoginUserForm(request.POST)
@@ -23,7 +23,7 @@ def log_in(request):
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)
-                return redirect('news:home')
+                return redirect('home')
             else:
                 return redirect(url)
     else:
@@ -37,7 +37,7 @@ def log_in(request):
 
 def register(request):
     if request.user.is_authenticated:
-        return redirect('news:home')
+        return redirect('home')
 
     if request.method == "POST":
         register_form = RegisterUserForm(request.POST)
